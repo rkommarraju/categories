@@ -3,6 +3,7 @@ package com.ecommerce.services.categories_service.Controller;
 import com.ecommerce.services.categories_service.Entity.Categories;
 import com.ecommerce.services.categories_service.Repository.CategoriesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,24 @@ public class CategoriesController {
         Optional<Categories> response=categoriesRepo.findById(id);
         if(response.isPresent()){
             return ResponseEntity.ok(response.get());
+        }
+        throw new FileNotFoundException();
+    }
+
+    @PutMapping("/{id}")
+    private ResponseEntity<String> updateACategory(@RequestBody Categories requestBody, @PathVariable UUID id) throws Exception{
+        if(categoriesRepo.existsById(id)){
+            categoriesRepo.save(requestBody);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        throw new FileNotFoundException();
+    }
+
+    @DeleteMapping("/{id}")
+    private ResponseEntity<String> deleteACategory(@PathVariable UUID id) throws Exception{
+        if(categoriesRepo.existsById(id)){
+            categoriesRepo.deleteById(id);
+            return ResponseEntity.status(HttpStatus.OK).build();
         }
         throw new FileNotFoundException();
     }
