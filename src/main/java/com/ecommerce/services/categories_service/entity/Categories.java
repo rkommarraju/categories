@@ -1,4 +1,4 @@
-package com.ecommerce.services.categories_service.Entity;
+package com.ecommerce.services.categories_service.entity;
 
 import jakarta.persistence.*;
 

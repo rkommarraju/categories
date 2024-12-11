@@ -1,6 +1,6 @@
-package com.ecommerce.services.categories_service.Repository;
+package com.ecommerce.services.categories_service.repository;
 
-import com.ecommerce.services.categories_service.Entity.Categories;
+import com.ecommerce.services.categories_service.entity.Categories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

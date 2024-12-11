@@ -1,7 +1,7 @@
-package com.ecommerce.services.categories_service.Controller;
+package com.ecommerce.services.categories_service.controller;
 
-import com.ecommerce.services.categories_service.Entity.Categories;
-import com.ecommerce.services.categories_service.Repository.CategoriesRepo;
+import com.ecommerce.services.categories_service.entity.Categories;
+import com.ecommerce.services.categories_service.repository.CategoriesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
