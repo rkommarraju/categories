@@ -19,6 +19,9 @@ public class CategoriesController {
     @Autowired
     private CategoriesRepo categoriesRepo;
 
+//    @Autowired
+//    private SubCategoriesRepo subCategoriesRepo;
+
 
     @PostMapping
     private ResponseEntity<String> createCategory(@RequestBody Categories requestBody){
@@ -32,13 +35,22 @@ public class CategoriesController {
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<Categories> getACategory(@PathVariable UUID id) throws Exception{
+    private ResponseEntity<Categories> getById(@PathVariable UUID id) throws Exception{
         Optional<Categories> response=categoriesRepo.findById(id);
         if(response.isPresent()){
             return ResponseEntity.ok(response.get());
         }
         throw new FileNotFoundException();
     }
+
+//    @GetMapping("/{name}")
+//    private ResponseEntity<Categories> getByName(@PathVariable String name) throws Exception{
+//        Optional<Categories> response=categoriesRepo.findByName(name);
+//        if(response.isPresent()){
+//            return ResponseEntity.ok(response.get());
+//        }
+//        throw new FileNotFoundException();
+//    }
 
     @PutMapping("/{id}")
     private ResponseEntity<String> updateACategory(@RequestBody Categories requestBody, @PathVariable UUID id) throws Exception{
